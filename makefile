@@ -3,15 +3,15 @@ INCLUDE = -I/usr/local/include/gtk-3.0 -I/usr/local/include/glib-2.0 \
   -I/usr/local/include/cairo -I/usr/local/include/gdk-pixbuf-2.0 \
   -I/usr/local/include/atk-1.0
 
-LIB = -L/usr/local/lib -lgtk-3 -lgdk-3 -lgobject-2.0 -lthr
+LIB = -L/usr/local/lib -lgtk-3 -lgdk-3 -lgobject-2.0 -lthr -lpam
 
 all: mindm
 
-mindm: main.c
+mindm: main.c pam.c
 	cc ${INCLUDE} ${LIB} -Wall -o ${.TARGET} ${.ALLSRC}
 
 clean:
-	rm -f mindm *.o
+	rm -f mindm *.o *.log
 
 test: mindm
 	Xephyr -ac -br -noreset -screen 800x600 :10 &

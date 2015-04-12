@@ -7,6 +7,8 @@
 
 #include <gtk/gtk.h>
 
+#include "pam.h"
+
 #define ENTER_KEY 65293
 #define ESC_KEY 65307
 #define UI_FILE "gui.ui"
@@ -21,15 +23,15 @@ static GtkLabel *status_label;
 
 static pthread_t login_thread;
 
-bool
-login(const char *username, const char *password, pid_t *child_pid) {
-  return false;
-}
-
-bool
-logout(void) {
-  return false;
-}
+//bool
+//login(const char *username, const char *password, pid_t *child_pid) {
+//  return false;
+//}
+//
+//bool
+//logout(void) {
+//  return false;
+//}
 
 static void*
 login_func(void *data) {
