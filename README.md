@@ -1,0 +1,2 @@
+# mindm
+minimal display manager
