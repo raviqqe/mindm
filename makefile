@@ -3,7 +3,7 @@ INCLUDE = -I/usr/local/include/gtk-3.0 -I/usr/local/include/glib-2.0 \
   -I/usr/local/include/cairo -I/usr/local/include/gdk-pixbuf-2.0 \
   -I/usr/local/include/atk-1.0
 
-LIB = -L/usr/local/lib -lgtk-3 -lgdk-3 -lgobject-2.0
+LIB = -L/usr/local/lib -lgtk-3 -lgdk-3 -lgobject-2.0 -lthr
 
 all: mindm
 
