@@ -13,8 +13,11 @@ mindm: main.c pam.c
 clean:
 	rm -f mindm *.o *.log
 
-test: mindm
+test_mindm: mindm
 	Xephyr -ac -br -noreset -screen 800x600 :10 &
 	DISPLAY=:10 ./mindm &
+
+drv_pam: test.c pam.c
+	cc ${INCLUDE} ${LIB} -Wall -o ${.TARGET} ${.ALLSRC}
 
 .PHONY: all clean

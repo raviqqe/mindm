@@ -57,8 +57,8 @@ end(int last_result) {
 }
 
 static int
-conv(int num_msg, const struct pam_message **msg,
-    struct pam_response **resp, void *appdata_ptr) {
+conv(int num_msg, const struct pam_message **msg, struct pam_response **resp,
+    void *appdata_ptr) {
   int i;
 
   *resp = calloc(num_msg, sizeof(struct pam_response));
@@ -101,13 +101,18 @@ conv(int num_msg, const struct pam_message **msg,
 }
 
 bool
-login(const char *username, const char *password, pid_t*child_pid) {
+login(const char *username, const char *password, pid_t *child_pid) {
   const char *data[2] = {username, password};
-  struct pam_conv pam_conv = {
+
+  printf("%s\n", username); // DEBUG
+  printf("%s\n", password); // DEBUG
+  //printf("%d\n", *child_pid); // DEBUG
+
+  struct pam_conv curr_conv = {
     conv, data
   };
 
-  int result = pam_start(SERVICE_NAME, username, &pam_conv, &pam_handle);
+  int result = pam_start(SERVICE_NAME, username, &curr_conv, &pam_handle);
   if (result != PAM_SUCCESS) {
     err("pam_start");
   }

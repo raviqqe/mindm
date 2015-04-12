@@ -2,6 +2,7 @@
 #define _PAM_H
 
 #include <stdbool.h>
+#include <unistd.h>
 
 bool login(const char *username, const char *password, pid_t *child_pid);
 bool logout(void);
