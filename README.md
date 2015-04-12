@@ -8,3 +8,6 @@ It's work in progress now.
 * minimalist only
 * Xft and Xinerama support
 * support for rebooting, and halting systems
+
+## todo
+* somehow it need a privillage of root to authenticate any user

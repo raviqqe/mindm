@@ -72,10 +72,12 @@ conv(int num_msg, const struct pam_message **msg, struct pam_response **resp,
     switch (msg[i]->msg_style) {
     case PAM_PROMPT_ECHO_ON:
       username = ((char **)appdata_ptr)[0];
+      //printf("conv(): username = %s\n", username); // DEBUG
       (*resp)[i].resp = strdup(username);
       break;
     case PAM_PROMPT_ECHO_OFF:
       password = ((char **)appdata_ptr)[1];
+      //printf("conv(): password = %s\n", password); // DEBUG
       (*resp)[i].resp = strdup(password);
       break;
     case PAM_ERROR_MSG:
@@ -104,8 +106,8 @@ bool
 login(const char *username, const char *password, pid_t *child_pid) {
   const char *data[2] = {username, password};
 
-  printf("%s\n", username); // DEBUG
-  printf("%s\n", password); // DEBUG
+  //printf("%s\n", username); // DEBUG
+  //printf("%s\n", password); // DEBUG
   //printf("%d\n", *child_pid); // DEBUG
 
   struct pam_conv curr_conv = {
